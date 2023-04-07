@@ -11,7 +11,9 @@ const {
 const {
   getHotList,
   getShopById,
-  getProductsByShopId
+  getProductsByShopId,
+  getHotWords,
+  getSearchList
 } = require('../controller/shop')
 
 router.prefix('/api/shop')
@@ -40,6 +42,20 @@ router.get('/:id/products', async (ctx, next) => {
   // 获取商品列表
   const productList = await getProductsByShopId(id, tab)
   ctx.body = new SuccessModel(productList)
+})
+
+// 热搜词
+router.get('/search/hot-words', async (ctx, next) => {
+  const words = await getHotWords()
+  ctx.body = new SuccessModel(words)
+})
+
+// 搜索列表页
+router.get('/search/searchlist', async (ctx, next) => {
+  const keyword = ctx.query.keyword
+  const shopList = await getSearchList(keyword)
+
+  ctx.body = new SuccessModel(shopList)
 })
 
 module.exports = router
