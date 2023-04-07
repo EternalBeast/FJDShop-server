@@ -346,6 +346,107 @@
 }
 ```
 
+## 获取热搜词
+
+### url
+
+`/api/shop/:id/products`
+
+### query
+
+`tab=all`
+
+示例：`/api/shop/search/hot-words`
+
+### method
+
+`get`
+
+### request body
+
+无
+
+### response body
+
+```js
+{
+  errno: 0,
+  data: [
+    "尖椒肉丝",
+    "番茄",
+    "草莓",
+    "橙子",
+    "鲜花",
+    "山姆会员商店",
+    "新鲜水果",
+    "牛奶",
+    "香槟玫瑰",
+    "生日鲜花",
+    "酸奶",
+  ],
+  message: 'errno !== 0 时的错误信息'
+}
+```
+
+## 搜索列表页
+
+### url
+
+`/api/shop/search/searchlist`
+
+### query
+
+`keyword=番茄`
+
+示例：`/api/shop/search/searchlist?keyword=番茄`
+
+### method
+
+`get`
+
+### request body
+
+无
+
+### response body
+
+```js
+{
+  errno: 0,
+  data: [
+    {
+    _id: '1',
+    name: '沃尔玛',
+    imgUrl: '',
+    sales: 10000,
+    expressLimit: 0,
+    expressPrice: 5,
+    slogan: 'VIP尊享满89元减4元运费券',
+    products: [{
+        name: '番茄 250g / 份',
+        imgUrl: '',
+        price: 33.6,
+        oldPrice: 39.6
+      },
+      {
+        name: '车厘子 500g / 份',
+        imgUrl: '',
+        price: 99.6,
+        oldPrice: 119.6
+      },
+      {
+        name: '橙子 500g/份',
+        imgUrl: '',
+        price: 12.6,
+        oldPrice: 22.6
+      }
+    ]
+  }
+  ],
+  message: 'errno !== 0 时的错误信息'
+}
+```
+
 ## 创建订单
 
 ### url
